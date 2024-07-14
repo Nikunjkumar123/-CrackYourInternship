@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        map<int, int> mpp;
+        map<int, int>::iterator it;
+        for (int i = 0; i < nums.size(); i++) {
+            mpp[nums[i]]++;
+        }
+        int ans;
+        int big = 0;
+        for (it = mpp.begin(); it != mpp.end(); it++) {
+            if (big < it->second) {
+                big = it->second;
+                ans = it->first;
+            }
+        }
+        return ans;
+    }
+};
